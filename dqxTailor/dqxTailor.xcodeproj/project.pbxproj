@@ -9,10 +9,22 @@
 /* Begin PBXBuildFile section */
 		582521EA1E1F875B000F5D51 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 582521E91E1F875B000F5D51 /* main.m */; };
 		582521ED1E1F875B000F5D51 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 582521EC1E1F875B000F5D51 /* AppDelegate.m */; };
-		582521F01E1F875B000F5D51 /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 582521EF1E1F875B000F5D51 /* ViewController.m */; };
 		582521F31E1F875B000F5D51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582521F11E1F875B000F5D51 /* Main.storyboard */; };
 		582521F51E1F875B000F5D51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 582521F41E1F875B000F5D51 /* Assets.xcassets */; };
 		582521F81E1F875B000F5D51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582521F61E1F875B000F5D51 /* LaunchScreen.storyboard */; };
+		58CC4BE01E1F8F7100421F48 /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4BDD1E1F8F7100421F48 /* UIImage+Common.m */; };
+		58CC4BE41E1F900600421F48 /* DTTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4BE31E1F900600421F48 /* DTTabBarController.m */; };
+		58CC4BE71E1F922D00421F48 /* DTListAndReciptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4BE61E1F922D00421F48 /* DTListAndReciptViewController.m */; };
+		58CC4BED1E1F927400421F48 /* DTAppSettingViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4BEC1E1F927400421F48 /* DTAppSettingViewController.m */; };
+		58CC4BF01E1F929B00421F48 /* DTTailorCalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4BEF1E1F929B00421F48 /* DTTailorCalculatorViewController.m */; };
+		58CC4BF61E1F984100421F48 /* DTAppHelpViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4BF51E1F984100421F48 /* DTAppHelpViewController.m */; };
+		58CC4BF91E1F990600421F48 /* DTBaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4BF81E1F990600421F48 /* DTBaseViewController.m */; };
+		58CC4BFE1E1F9B6700421F48 /* DTBaseCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4BFD1E1F9B6700421F48 /* DTBaseCell.m */; };
+		58CC4C011E1F9C0000421F48 /* DTTableCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4C001E1F9C0000421F48 /* DTTableCell.m */; };
+		58CC4C051E1F9CD500421F48 /* DTTableHeaderView.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4C041E1F9CD500421F48 /* DTTableHeaderView.m */; };
+		58CC4C071E1F9D6E00421F48 /* DTReciptMaterialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4C061E1F9D6E00421F48 /* DTReciptMaterialViewController.m */; };
+		58CC4C0B1E1F9E6E00421F48 /* DTDetailMaterialCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4C0A1E1F9E6E00421F48 /* DTDetailMaterialCell.m */; };
+		58CC4C0E1E1FA0A400421F48 /* DTAppSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4C0D1E1FA0A400421F48 /* DTAppSettingCell.m */; };
 		FE489177A02A21F8561EE474 /* libPods-dqxTailor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5ED8E680CF3DAB29F2A51A /* libPods-dqxTailor.a */; };
 /* End PBXBuildFile section */
 
@@ -21,12 +33,39 @@
 		582521E91E1F875B000F5D51 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		582521EB1E1F875B000F5D51 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		582521EC1E1F875B000F5D51 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		582521EE1E1F875B000F5D51 /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		582521EF1E1F875B000F5D51 /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		582521F21E1F875B000F5D51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		582521F41E1F875B000F5D51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		582521F71E1F875B000F5D51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		582521F91E1F875B000F5D51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58CC4BCF1E1F8BA800421F48 /* dqxTailor.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dqxTailor.pch; sourceTree = "<group>"; };
+		58CC4BD91E1F8F5A00421F48 /* Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Macros.h; path = Common/Headers/Macros.h; sourceTree = "<group>"; };
+		58CC4BDA1E1F8F5A00421F48 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Common/Headers/Constants.h; sourceTree = "<group>"; };
+		58CC4BDD1E1F8F7100421F48 /* UIImage+Common.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = "UIImage+Common.m"; path = "Common/Categories/UIImage+Common.m"; sourceTree = "<group>"; };
+		58CC4BDE1E1F8F7100421F48 /* UIImage+Common.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "UIImage+Common.h"; path = "Common/Categories/UIImage+Common.h"; sourceTree = "<group>"; };
+		58CC4BE21E1F8FDF00421F48 /* DTTabBarController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DTTabBarController.h; path = ViewControllers/TabBar/DTTabBarController.h; sourceTree = "<group>"; };
+		58CC4BE31E1F900600421F48 /* DTTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTabBarController.m; path = ViewControllers/TabBar/DTTabBarController.m; sourceTree = "<group>"; };
+		58CC4BE51E1F921B00421F48 /* DTListAndReciptViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DTListAndReciptViewController.h; path = ViewControllers/ListAndRecipe/DTListAndReciptViewController.h; sourceTree = "<group>"; };
+		58CC4BE61E1F922D00421F48 /* DTListAndReciptViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTListAndReciptViewController.m; path = ViewControllers/ListAndRecipe/DTListAndReciptViewController.m; sourceTree = "<group>"; };
+		58CC4BEB1E1F926700421F48 /* DTAppSettingViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DTAppSettingViewController.h; path = ViewControllers/AppSetting/DTAppSettingViewController.h; sourceTree = "<group>"; };
+		58CC4BEC1E1F927400421F48 /* DTAppSettingViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTAppSettingViewController.m; path = ViewControllers/AppSetting/DTAppSettingViewController.m; sourceTree = "<group>"; };
+		58CC4BEE1E1F929B00421F48 /* DTTailorCalculatorViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTTailorCalculatorViewController.h; path = ViewControllers/TailorCalculator/DTTailorCalculatorViewController.h; sourceTree = "<group>"; };
+		58CC4BEF1E1F929B00421F48 /* DTTailorCalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTailorCalculatorViewController.m; path = ViewControllers/TailorCalculator/DTTailorCalculatorViewController.m; sourceTree = "<group>"; };
+		58CC4BF41E1F983400421F48 /* DTAppHelpViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DTAppHelpViewController.h; path = ViewControllers/AppSetting/DTAppHelpViewController.h; sourceTree = "<group>"; };
+		58CC4BF51E1F984100421F48 /* DTAppHelpViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTAppHelpViewController.m; path = ViewControllers/AppSetting/DTAppHelpViewController.m; sourceTree = "<group>"; };
+		58CC4BF81E1F990600421F48 /* DTBaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTBaseViewController.m; path = ViewControllers/Base/DTBaseViewController.m; sourceTree = "<group>"; };
+		58CC4BFA1E1F991000421F48 /* DTBaseViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DTBaseViewController.h; path = ViewControllers/Base/DTBaseViewController.h; sourceTree = "<group>"; };
+		58CC4BFC1E1F9B5B00421F48 /* DTBaseCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DTBaseCell.h; path = CustomViews/Base/DTBaseCell.h; sourceTree = "<group>"; };
+		58CC4BFD1E1F9B6700421F48 /* DTBaseCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTBaseCell.m; path = CustomViews/Base/DTBaseCell.m; sourceTree = "<group>"; };
+		58CC4C001E1F9C0000421F48 /* DTTableCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTableCell.m; path = CustomViews/TableCells/DTTableCell.m; sourceTree = "<group>"; };
+		58CC4C021E1F9C0900421F48 /* DTTableCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DTTableCell.h; path = CustomViews/TableCells/DTTableCell.h; sourceTree = "<group>"; };
+		58CC4C031E1F9CC900421F48 /* DTTableHeaderView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DTTableHeaderView.h; path = CustomViews/TableCells/DTTableHeaderView.h; sourceTree = "<group>"; };
+		58CC4C041E1F9CD500421F48 /* DTTableHeaderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTTableHeaderView.m; path = CustomViews/TableCells/DTTableHeaderView.m; sourceTree = "<group>"; };
+		58CC4C061E1F9D6E00421F48 /* DTReciptMaterialViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTReciptMaterialViewController.m; path = ViewControllers/ListAndRecipe/DTReciptMaterialViewController.m; sourceTree = "<group>"; };
+		58CC4C081E1F9D7700421F48 /* DTReciptMaterialViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DTReciptMaterialViewController.h; path = ViewControllers/ListAndRecipe/DTReciptMaterialViewController.h; sourceTree = "<group>"; };
+		58CC4C091E1F9E6300421F48 /* DTDetailMaterialCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DTDetailMaterialCell.h; path = CustomViews/TableCells/DTDetailMaterialCell.h; sourceTree = "<group>"; };
+		58CC4C0A1E1F9E6E00421F48 /* DTDetailMaterialCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTDetailMaterialCell.m; path = CustomViews/TableCells/DTDetailMaterialCell.m; sourceTree = "<group>"; };
+		58CC4C0D1E1FA0A400421F48 /* DTAppSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTAppSettingCell.m; path = CustomViews/AppSettingCell/DTAppSettingCell.m; sourceTree = "<group>"; };
+		58CC4C0F1E1FA0AC00421F48 /* DTAppSettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DTAppSettingCell.h; path = CustomViews/AppSettingCell/DTAppSettingCell.h; sourceTree = "<group>"; };
 		B13BCBAF5639DBE8411525ED /* Pods-dqxTailor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dqxTailor.release.xcconfig"; path = "Pods/Target Support Files/Pods-dqxTailor/Pods-dqxTailor.release.xcconfig"; sourceTree = "<group>"; };
 		D2BBE20B1C9938E15DFA26E2 /* Pods-dqxTailor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dqxTailor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dqxTailor/Pods-dqxTailor.debug.xcconfig"; sourceTree = "<group>"; };
 		ED5ED8E680CF3DAB29F2A51A /* libPods-dqxTailor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-dqxTailor.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -74,10 +113,12 @@
 		582521E71E1F875B000F5D51 /* dqxTailor */ = {
 			isa = PBXGroup;
 			children = (
+				58CC4BD31E1F8EC700421F48 /* Common */,
+				58CC4BD21E1F8EC000421F48 /* Models */,
+				58CC4BD11E1F8EB400421F48 /* CustomViews */,
+				58CC4BD01E1F8EAC00421F48 /* ViewControllers */,
 				582521EB1E1F875B000F5D51 /* AppDelegate.h */,
 				582521EC1E1F875B000F5D51 /* AppDelegate.m */,
-				582521EE1E1F875B000F5D51 /* ViewController.h */,
-				582521EF1E1F875B000F5D51 /* ViewController.m */,
 				582521F11E1F875B000F5D51 /* Main.storyboard */,
 				582521F41E1F875B000F5D51 /* Assets.xcassets */,
 				582521F61E1F875B000F5D51 /* LaunchScreen.storyboard */,
@@ -91,8 +132,145 @@
 			isa = PBXGroup;
 			children = (
 				582521E91E1F875B000F5D51 /* main.m */,
+				58CC4BCF1E1F8BA800421F48 /* dqxTailor.pch */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		58CC4BD01E1F8EAC00421F48 /* ViewControllers */ = {
+			isa = PBXGroup;
+			children = (
+				58CC4BF71E1F98CA00421F48 /* Base */,
+				58CC4BE11E1F8FB800421F48 /* TabBar */,
+				58CC4BD51E1F8EEF00421F48 /* ListAndRecipt */,
+				58CC4BD41E1F8EE300421F48 /* TailorCalculator */,
+				58CC4BD61E1F8EFA00421F48 /* AppSetting */,
+			);
+			name = ViewControllers;
+			sourceTree = "<group>";
+		};
+		58CC4BD11E1F8EB400421F48 /* CustomViews */ = {
+			isa = PBXGroup;
+			children = (
+				58CC4C0C1E1FA07E00421F48 /* AppSettingCell */,
+				58CC4BFF1E1F9BC500421F48 /* TableCells */,
+				58CC4BFB1E1F9B3D00421F48 /* Base */,
+			);
+			name = CustomViews;
+			sourceTree = "<group>";
+		};
+		58CC4BD21E1F8EC000421F48 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Models;
+			sourceTree = "<group>";
+		};
+		58CC4BD31E1F8EC700421F48 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				58CC4BD71E1F8F3700421F48 /* Categories */,
+				58CC4BD81E1F8F3F00421F48 /* Headers */,
+			);
+			name = Common;
+			sourceTree = "<group>";
+		};
+		58CC4BD41E1F8EE300421F48 /* TailorCalculator */ = {
+			isa = PBXGroup;
+			children = (
+				58CC4BEE1E1F929B00421F48 /* DTTailorCalculatorViewController.h */,
+				58CC4BEF1E1F929B00421F48 /* DTTailorCalculatorViewController.m */,
+			);
+			name = TailorCalculator;
+			sourceTree = "<group>";
+		};
+		58CC4BD51E1F8EEF00421F48 /* ListAndRecipt */ = {
+			isa = PBXGroup;
+			children = (
+				58CC4BE51E1F921B00421F48 /* DTListAndReciptViewController.h */,
+				58CC4BE61E1F922D00421F48 /* DTListAndReciptViewController.m */,
+				58CC4C081E1F9D7700421F48 /* DTReciptMaterialViewController.h */,
+				58CC4C061E1F9D6E00421F48 /* DTReciptMaterialViewController.m */,
+			);
+			name = ListAndRecipt;
+			sourceTree = "<group>";
+		};
+		58CC4BD61E1F8EFA00421F48 /* AppSetting */ = {
+			isa = PBXGroup;
+			children = (
+				58CC4BEB1E1F926700421F48 /* DTAppSettingViewController.h */,
+				58CC4BEC1E1F927400421F48 /* DTAppSettingViewController.m */,
+				58CC4BF41E1F983400421F48 /* DTAppHelpViewController.h */,
+				58CC4BF51E1F984100421F48 /* DTAppHelpViewController.m */,
+			);
+			name = AppSetting;
+			sourceTree = "<group>";
+		};
+		58CC4BD71E1F8F3700421F48 /* Categories */ = {
+			isa = PBXGroup;
+			children = (
+				58CC4BDD1E1F8F7100421F48 /* UIImage+Common.m */,
+				58CC4BDE1E1F8F7100421F48 /* UIImage+Common.h */,
+			);
+			name = Categories;
+			sourceTree = "<group>";
+		};
+		58CC4BD81E1F8F3F00421F48 /* Headers */ = {
+			isa = PBXGroup;
+			children = (
+				58CC4BD91E1F8F5A00421F48 /* Macros.h */,
+				58CC4BDA1E1F8F5A00421F48 /* Constants.h */,
+			);
+			name = Headers;
+			sourceTree = "<group>";
+		};
+		58CC4BE11E1F8FB800421F48 /* TabBar */ = {
+			isa = PBXGroup;
+			children = (
+				58CC4BE21E1F8FDF00421F48 /* DTTabBarController.h */,
+				58CC4BE31E1F900600421F48 /* DTTabBarController.m */,
+			);
+			name = TabBar;
+			sourceTree = "<group>";
+		};
+		58CC4BF71E1F98CA00421F48 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				58CC4BF81E1F990600421F48 /* DTBaseViewController.m */,
+				58CC4BFA1E1F991000421F48 /* DTBaseViewController.h */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		58CC4BFB1E1F9B3D00421F48 /* Base */ = {
+			isa = PBXGroup;
+			children = (
+				58CC4BFC1E1F9B5B00421F48 /* DTBaseCell.h */,
+				58CC4BFD1E1F9B6700421F48 /* DTBaseCell.m */,
+			);
+			name = Base;
+			sourceTree = "<group>";
+		};
+		58CC4BFF1E1F9BC500421F48 /* TableCells */ = {
+			isa = PBXGroup;
+			children = (
+				58CC4C001E1F9C0000421F48 /* DTTableCell.m */,
+				58CC4C021E1F9C0900421F48 /* DTTableCell.h */,
+				58CC4C031E1F9CC900421F48 /* DTTableHeaderView.h */,
+				58CC4C041E1F9CD500421F48 /* DTTableHeaderView.m */,
+				58CC4C091E1F9E6300421F48 /* DTDetailMaterialCell.h */,
+				58CC4C0A1E1F9E6E00421F48 /* DTDetailMaterialCell.m */,
+			);
+			name = TableCells;
+			sourceTree = "<group>";
+		};
+		58CC4C0C1E1FA07E00421F48 /* AppSettingCell */ = {
+			isa = PBXGroup;
+			children = (
+				58CC4C0F1E1FA0AC00421F48 /* DTAppSettingCell.h */,
+				58CC4C0D1E1FA0A400421F48 /* DTAppSettingCell.m */,
+			);
+			name = AppSettingCell;
 			sourceTree = "<group>";
 		};
 		D271CFE076D72A8E63B971ED /* Frameworks */ = {
@@ -226,8 +404,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				582521F01E1F875B000F5D51 /* ViewController.m in Sources */,
+				58CC4BE71E1F922D00421F48 /* DTListAndReciptViewController.m in Sources */,
+				58CC4C0E1E1FA0A400421F48 /* DTAppSettingCell.m in Sources */,
+				58CC4BE01E1F8F7100421F48 /* UIImage+Common.m in Sources */,
+				58CC4BF61E1F984100421F48 /* DTAppHelpViewController.m in Sources */,
+				58CC4BF91E1F990600421F48 /* DTBaseViewController.m in Sources */,
+				58CC4BE41E1F900600421F48 /* DTTabBarController.m in Sources */,
+				58CC4C071E1F9D6E00421F48 /* DTReciptMaterialViewController.m in Sources */,
+				58CC4C011E1F9C0000421F48 /* DTTableCell.m in Sources */,
+				58CC4BFE1E1F9B6700421F48 /* DTBaseCell.m in Sources */,
+				58CC4C0B1E1F9E6E00421F48 /* DTDetailMaterialCell.m in Sources */,
 				582521ED1E1F875B000F5D51 /* AppDelegate.m in Sources */,
+				58CC4BED1E1F927400421F48 /* DTAppSettingViewController.m in Sources */,
+				58CC4C051E1F9CD500421F48 /* DTTableHeaderView.m in Sources */,
+				58CC4BF01E1F929B00421F48 /* DTTailorCalculatorViewController.m in Sources */,
 				582521EA1E1F875B000F5D51 /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -350,6 +540,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 887CVK63XR;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = dqxTailor/dqxTailor.pch;
 				INFOPLIST_FILE = dqxTailor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -365,6 +557,8 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = 887CVK63XR;
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = dqxTailor/dqxTailor.pch;
 				INFOPLIST_FILE = dqxTailor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
@@ -393,6 +587,7 @@
 				582521FE1E1F875B000F5D51 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};

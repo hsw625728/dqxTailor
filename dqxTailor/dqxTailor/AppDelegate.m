@@ -7,6 +7,7 @@
 //
 
 #import "AppDelegate.h"
+#import "DTTabBarController.h"
 
 @interface AppDelegate ()
 
@@ -17,6 +18,21 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
+    //初始化核心全局数据
+    [self initData];
+    
+    //创建主窗口
+    _window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    _window.backgroundColor = [UIColor whiteColor];
+    [_window makeKeyAndVisible];
+    
+    //设置导航栏的样式
+    [[UINavigationBar appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName : DNavigationBarTitleTextColor}];
+    [[UINavigationBar appearance] setTintColor:DLightGrayTextColor];
+    [[UINavigationBar appearance] setBarTintColor:DNavigationBarTitleTextColor];
+    
+    
+    _window.rootViewController = [[DTTabBarController alloc] init];
     return YES;
 }
 
@@ -47,5 +63,7 @@
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
 }
 
-
+- (void)initData{
+    
+}
 @end
