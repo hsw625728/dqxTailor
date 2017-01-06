@@ -25,6 +25,7 @@
 		58CC4C071E1F9D6E00421F48 /* DTReciptMaterialViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4C061E1F9D6E00421F48 /* DTReciptMaterialViewController.m */; };
 		58CC4C0B1E1F9E6E00421F48 /* DTDetailMaterialCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4C0A1E1F9E6E00421F48 /* DTDetailMaterialCell.m */; };
 		58CC4C0E1E1FA0A400421F48 /* DTAppSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4C0D1E1FA0A400421F48 /* DTAppSettingCell.m */; };
+		58CC4C121E1FA79600421F48 /* DTCalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4C111E1FA79600421F48 /* DTCalculatorViewController.m */; };
 		FE489177A02A21F8561EE474 /* libPods-dqxTailor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5ED8E680CF3DAB29F2A51A /* libPods-dqxTailor.a */; };
 /* End PBXBuildFile section */
 
@@ -66,6 +67,8 @@
 		58CC4C0A1E1F9E6E00421F48 /* DTDetailMaterialCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTDetailMaterialCell.m; path = CustomViews/TableCells/DTDetailMaterialCell.m; sourceTree = "<group>"; };
 		58CC4C0D1E1FA0A400421F48 /* DTAppSettingCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTAppSettingCell.m; path = CustomViews/AppSettingCell/DTAppSettingCell.m; sourceTree = "<group>"; };
 		58CC4C0F1E1FA0AC00421F48 /* DTAppSettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DTAppSettingCell.h; path = CustomViews/AppSettingCell/DTAppSettingCell.h; sourceTree = "<group>"; };
+		58CC4C101E1FA78600421F48 /* DTCalculatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DTCalculatorViewController.h; path = ViewControllers/TailorCalculator/DTCalculatorViewController.h; sourceTree = "<group>"; };
+		58CC4C111E1FA79600421F48 /* DTCalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTCalculatorViewController.m; path = ViewControllers/TailorCalculator/DTCalculatorViewController.m; sourceTree = "<group>"; };
 		B13BCBAF5639DBE8411525ED /* Pods-dqxTailor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dqxTailor.release.xcconfig"; path = "Pods/Target Support Files/Pods-dqxTailor/Pods-dqxTailor.release.xcconfig"; sourceTree = "<group>"; };
 		D2BBE20B1C9938E15DFA26E2 /* Pods-dqxTailor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dqxTailor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dqxTailor/Pods-dqxTailor.debug.xcconfig"; sourceTree = "<group>"; };
 		ED5ED8E680CF3DAB29F2A51A /* libPods-dqxTailor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-dqxTailor.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -180,6 +183,8 @@
 			children = (
 				58CC4BEE1E1F929B00421F48 /* DTTailorCalculatorViewController.h */,
 				58CC4BEF1E1F929B00421F48 /* DTTailorCalculatorViewController.m */,
+				58CC4C101E1FA78600421F48 /* DTCalculatorViewController.h */,
+				58CC4C111E1FA79600421F48 /* DTCalculatorViewController.m */,
 			);
 			name = TailorCalculator;
 			sourceTree = "<group>";
@@ -412,6 +417,7 @@
 				58CC4BE41E1F900600421F48 /* DTTabBarController.m in Sources */,
 				58CC4C071E1F9D6E00421F48 /* DTReciptMaterialViewController.m in Sources */,
 				58CC4C011E1F9C0000421F48 /* DTTableCell.m in Sources */,
+				58CC4C121E1FA79600421F48 /* DTCalculatorViewController.m in Sources */,
 				58CC4BFE1E1F9B6700421F48 /* DTBaseCell.m in Sources */,
 				58CC4C0B1E1F9E6E00421F48 /* DTDetailMaterialCell.m in Sources */,
 				582521ED1E1F875B000F5D51 /* AppDelegate.m in Sources */,

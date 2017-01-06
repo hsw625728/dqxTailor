@@ -12,6 +12,7 @@
 #import "DTListAndReciptViewController.h"
 #import "DTTailorCalculatorViewController.h"
 #import "DTAppSettingViewController.h"
+#import "DTCalculatorViewController.h"
 
 
 @interface DTTabBarController ()
@@ -29,7 +30,12 @@
         UINavigationController *cateNavigationController = [[UINavigationController alloc] initWithRootViewController:cateViewController];
         cateNavigationController.title = DListAndRecipt;
         
+        /*
         DTTailorCalculatorViewController *cateViewController1 = [[DTTailorCalculatorViewController alloc] init];
+        UINavigationController *cateNavigationController1 = [[UINavigationController alloc] initWithRootViewController:cateViewController1];
+        cateNavigationController1.title = DTailorCalculator;
+         */
+        DTCalculatorViewController *cateViewController1 = [[DTCalculatorViewController alloc] init];
         UINavigationController *cateNavigationController1 = [[UINavigationController alloc] initWithRootViewController:cateViewController1];
         cateNavigationController1.title = DTailorCalculator;
         

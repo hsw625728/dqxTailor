@@ -30,7 +30,7 @@
 
 //Title
 #define DListAndRecipt @"套装素材"
-#define DTailorCalculator @"职人计算器"
+#define DTailorCalculator @"裁缝计算器"
 #define DAppSetting @"软件设置"
 #define DMaterialItem @"素材列表"
 #define DAppHelp @"操作示例"
