@@ -34,6 +34,9 @@
 //10个状态循环条
 @property (strong, nonatomic) NSMutableArray *states;
 @property (nonatomic, assign) NSInteger activeTileIndex;
+//5种力道的数值
+@property (strong, nonatomic) NSDictionary *stateValues;
+@property (strong, nonatomic) UILabel *stateValueLabel;
 
 
 @end
@@ -124,7 +127,7 @@ te;\
 
 #define TILE_LABEL(a,b) a = ({\
     UILabel *label = [UILabel new];\
-    label.font = FontWithSize(8);\
+    label.font = FontWithSize(12);\
     label.text = @"";\
     label.textAlignment = NSTextAlignmentCenter;\
     label.textColor = DLightBlackTextColor;\
@@ -139,6 +142,7 @@ te;\
     _activeTileIndex = -1;
     _tiles = [[NSMutableArray alloc] initWithCapacity:9];
     _cutpoints = [[NSMutableArray alloc] initWithCapacity:9];
+    _stateValues = [[NSDictionary alloc] initWithObjectsAndKeys:WEAK_VALUES, @"弱",NORMAL_VALUES, @"普通", STRONG_VALUES, @"强", MAX_VALUES, @"最强", nil];
     
     for (int i = 0; i < 9; i++){
         UITextField* tile = [[UITextField alloc] init];
@@ -222,6 +226,20 @@ te;\
     TILE_LABEL(_cutpoints[7], _tiles[7]);
     TILE_LABEL(_cutpoints[8], _tiles[8]);
 
+    _stateValueLabel = ({
+        UILabel *label = [UILabel new];
+        //label.backgroundColor = [UIColor whiteColor];
+        label.font = FontWithSize(12);
+        label.textColor = DLightBlackTextColor;
+        label.numberOfLines = 5;
+        [self.view addSubview:label];
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(self.view).offset(0);
+            make.left.equalTo(self.view).offset(0);
+        }];
+        
+        label;
+    });
     
     switch (info.type) {
         case 0:
@@ -297,6 +315,9 @@ te;\
             t.background = [UIImage imageNamed:@"Button_normal"];
         }
         textField.background = [UIImage imageNamed:@"Button_select"];
+        NSString *eqName = textField.text;
+        NSString *desc = [_stateValues objectForKey:eqName];
+        _stateValueLabel.text = desc;
     }
     return NO;
 }
