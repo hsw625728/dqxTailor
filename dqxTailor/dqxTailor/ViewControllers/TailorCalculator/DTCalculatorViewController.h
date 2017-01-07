@@ -13,6 +13,8 @@
 
 @interface DTCalculatorViewController : DTBaseViewController
 
+- (void) setEquipName:(NSString*)name;
+
 @end
 
 #endif /* DTCalculatorViewController_h */

@@ -16,4 +16,5 @@
 #import "Macros.h"
 #import <UIKit/UITableViewCell.h>
 #import "DTGlobalTailorInfo.h"
+#import "AppDelegate.h"
 #endif /* dqxTailor_pch */

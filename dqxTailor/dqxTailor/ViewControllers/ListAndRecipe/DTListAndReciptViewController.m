@@ -13,6 +13,7 @@
 #import "DTTableHeaderView.h"
 #import "View+MASAdditions.h"
 #import "DTReciptMaterialViewController.h"
+#import "DTCalculatorViewController.h"
 
 @interface DTListAndReciptViewController() <UITableViewDataSource, UITableViewDelegate>
 
@@ -126,11 +127,17 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    /*跳转配方原料页面
     DTReciptMaterialViewController *materialController = [[DTReciptMaterialViewController alloc] init];
     [materialController setItemName:rowTitles[indexPath.section][indexPath.row]];
     [self.navigationController pushViewController:materialController animated:YES];
+    */
     
+    DTCalculatorViewController *materialController = [[DTCalculatorViewController alloc] init];
+    [materialController setEquipName:rowTitles[indexPath.section][indexPath.row]];
+    [self.navigationController pushViewController:materialController animated:YES];
     
+    /*
     NSMutableArray *history;
     NSString *docPath =  [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject];
     NSString *path = [docPath stringByAppendingPathComponent:@"RecipeHistory"];
@@ -144,6 +151,7 @@
         [history removeObjectAtIndex:0];
     
     [NSKeyedArchiver archiveRootObject:history toFile:path];
+     */
 }
 
 @end
