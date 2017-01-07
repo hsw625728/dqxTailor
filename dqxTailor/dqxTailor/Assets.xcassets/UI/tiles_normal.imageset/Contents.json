@@ -2,7 +2,7 @@
   "images" : [
     {
       "idiom" : "universal",
-      "filename" : "btn.jpg",
+      "filename" : "tiles_normal.png",
       "scale" : "1x"
     },
     {

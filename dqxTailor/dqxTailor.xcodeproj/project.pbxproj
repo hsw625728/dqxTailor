@@ -26,6 +26,9 @@
 		58CC4C0B1E1F9E6E00421F48 /* DTDetailMaterialCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4C0A1E1F9E6E00421F48 /* DTDetailMaterialCell.m */; };
 		58CC4C0E1E1FA0A400421F48 /* DTAppSettingCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4C0D1E1FA0A400421F48 /* DTAppSettingCell.m */; };
 		58CC4C121E1FA79600421F48 /* DTCalculatorViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4C111E1FA79600421F48 /* DTCalculatorViewController.m */; };
+		58F877B51E20A24400C879E5 /* data.db in Resources */ = {isa = PBXBuildFile; fileRef = 58F877B41E20A24400C879E5 /* data.db */; };
+		58F877B71E20A28000C879E5 /* libsqlite3.0.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 58F877B61E20A28000C879E5 /* libsqlite3.0.tbd */; };
+		58F877B91E20A6EC00C879E5 /* DTGlobalTailorInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = 58F877B81E20A6EC00C879E5 /* DTGlobalTailorInfo.m */; };
 		FE489177A02A21F8561EE474 /* libPods-dqxTailor.a in Frameworks */ = {isa = PBXBuildFile; fileRef = ED5ED8E680CF3DAB29F2A51A /* libPods-dqxTailor.a */; };
 /* End PBXBuildFile section */
 
@@ -69,6 +72,10 @@
 		58CC4C0F1E1FA0AC00421F48 /* DTAppSettingCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DTAppSettingCell.h; path = CustomViews/AppSettingCell/DTAppSettingCell.h; sourceTree = "<group>"; };
 		58CC4C101E1FA78600421F48 /* DTCalculatorViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = DTCalculatorViewController.h; path = ViewControllers/TailorCalculator/DTCalculatorViewController.h; sourceTree = "<group>"; };
 		58CC4C111E1FA79600421F48 /* DTCalculatorViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTCalculatorViewController.m; path = ViewControllers/TailorCalculator/DTCalculatorViewController.m; sourceTree = "<group>"; };
+		58F877B41E20A24400C879E5 /* data.db */ = {isa = PBXFileReference; lastKnownFileType = file; name = data.db; path = database/data.db; sourceTree = "<group>"; };
+		58F877B61E20A28000C879E5 /* libsqlite3.0.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.0.tbd; path = usr/lib/libsqlite3.0.tbd; sourceTree = SDKROOT; };
+		58F877B81E20A6EC00C879E5 /* DTGlobalTailorInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DTGlobalTailorInfo.m; path = Models/DTGlobalTailorInfo.m; sourceTree = "<group>"; };
+		58F877BB1E20AB0100C879E5 /* DTGlobalTailorInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DTGlobalTailorInfo.h; path = Models/DTGlobalTailorInfo.h; sourceTree = "<group>"; };
 		B13BCBAF5639DBE8411525ED /* Pods-dqxTailor.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dqxTailor.release.xcconfig"; path = "Pods/Target Support Files/Pods-dqxTailor/Pods-dqxTailor.release.xcconfig"; sourceTree = "<group>"; };
 		D2BBE20B1C9938E15DFA26E2 /* Pods-dqxTailor.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-dqxTailor.debug.xcconfig"; path = "Pods/Target Support Files/Pods-dqxTailor/Pods-dqxTailor.debug.xcconfig"; sourceTree = "<group>"; };
 		ED5ED8E680CF3DAB29F2A51A /* libPods-dqxTailor.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-dqxTailor.a"; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -79,6 +86,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58F877B71E20A28000C879E5 /* libsqlite3.0.tbd in Frameworks */,
 				FE489177A02A21F8561EE474 /* libPods-dqxTailor.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -116,6 +124,7 @@
 		582521E71E1F875B000F5D51 /* dqxTailor */ = {
 			isa = PBXGroup;
 			children = (
+				58F877B31E20A22200C879E5 /* database */,
 				58CC4BD31E1F8EC700421F48 /* Common */,
 				58CC4BD21E1F8EC000421F48 /* Models */,
 				58CC4BD11E1F8EB400421F48 /* CustomViews */,
@@ -165,6 +174,8 @@
 		58CC4BD21E1F8EC000421F48 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				58F877BB1E20AB0100C879E5 /* DTGlobalTailorInfo.h */,
+				58F877B81E20A6EC00C879E5 /* DTGlobalTailorInfo.m */,
 			);
 			name = Models;
 			sourceTree = "<group>";
@@ -278,9 +289,18 @@
 			name = AppSettingCell;
 			sourceTree = "<group>";
 		};
+		58F877B31E20A22200C879E5 /* database */ = {
+			isa = PBXGroup;
+			children = (
+				58F877B41E20A24400C879E5 /* data.db */,
+			);
+			name = database;
+			sourceTree = "<group>";
+		};
 		D271CFE076D72A8E63B971ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58F877B61E20A28000C879E5 /* libsqlite3.0.tbd */,
 				ED5ED8E680CF3DAB29F2A51A /* libPods-dqxTailor.a */,
 			);
 			name = Frameworks;
@@ -349,6 +369,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				582521F81E1F875B000F5D51 /* LaunchScreen.storyboard in Resources */,
+				58F877B51E20A24400C879E5 /* data.db in Resources */,
 				582521F51E1F875B000F5D51 /* Assets.xcassets in Resources */,
 				582521F31E1F875B000F5D51 /* Main.storyboard in Resources */,
 			);
@@ -412,6 +433,7 @@
 				58CC4BE71E1F922D00421F48 /* DTListAndReciptViewController.m in Sources */,
 				58CC4C0E1E1FA0A400421F48 /* DTAppSettingCell.m in Sources */,
 				58CC4BE01E1F8F7100421F48 /* UIImage+Common.m in Sources */,
+				58F877B91E20A6EC00C879E5 /* DTGlobalTailorInfo.m in Sources */,
 				58CC4BF61E1F984100421F48 /* DTAppHelpViewController.m in Sources */,
 				58CC4BF91E1F990600421F48 /* DTBaseViewController.m in Sources */,
 				58CC4BE41E1F900600421F48 /* DTTabBarController.m in Sources */,

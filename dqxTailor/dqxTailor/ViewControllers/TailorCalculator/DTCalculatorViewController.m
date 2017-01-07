@@ -29,7 +29,7 @@
 @property (strong, nonatomic) UIButton *btnDone;
 @property (strong, nonatomic) UIButton *btnRecover;
 
-@property (strong, nonatomic) UITextField *tile1;
+@property (strong, nonatomic) NSMutableArray *tiles;
 @property (strong, nonatomic) UITextField *tile2;
 @property (strong, nonatomic) UITextField *tile3;
 @property (strong, nonatomic) UITextField *tile4;
@@ -62,307 +62,96 @@
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
-    
+    [self initData];
     [self setupViews];
 }
 
 #pragma mark - Private Method
 
-//#define BTN_TILE_SETTING(
+#define BTN_NUMBER_SETTING(a,b,c,d) a = ({\
+    UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];\
+    btn.titleLabel.font = [UIFont systemFontOfSize: 20];\
+    [btn setTitle:b forState:UIControlStateNormal];\
+    [btn setBackgroundImage:[UIImage imageNamed:@"nbtn_normal"] forState:(UIControlStateNormal)];\
+    [btn setBackgroundImage:[UIImage imageNamed:@"nbtn_hover"] forState:(UIControlStateSelected)];\
+    [btn setBackgroundImage:[UIImage imageNamed:@"nbtn_active"] forState:(UIControlStateFocused)];\
+    [btn setTitleColor:[UIColor blackColor]forState:UIControlStateNormal];\
+    [btn setTitleColor:[UIColor blackColor]forState:UIControlStateSelected];\
+    [btn setTitleColor:[UIColor blackColor]forState:UIControlStateFocused];\
+    [btn setTitleColor:[UIColor grayColor]forState:UIControlStateDisabled];\
+    [btn addTarget:self action:@selector(recBtnClick:) forControlEvents:UIControlEventTouchUpInside];\
+    [self.view addSubview:btn];\
+    [btn mas_makeConstraints:^(MASConstraintMaker *make) {\
+        make.centerX.equalTo(self.view.mas_centerX).offset(c);\
+        make.bottom.equalTo(self.view).offset(d);\
+    make.size.sizeOffset(CGSizeMake(3*WIDTH, 1.5*WIDTH));\
+    }];\
+    btn;\
+})
+
+#define TILE_SETTING(a,b,c,d) a = ({\
+    UITextField *text = [[UITextField alloc] init];\
+    text.borderStyle = UITextBorderStyleNone;\
+    text.tag = b;\
+    text.enabled = true;\
+    text.delegate = self;\
+    text.background = [UIImage imageNamed:@"tiles_normal"];\
+    [self.view addSubview:text];\
+    [text mas_makeConstraints:^(MASConstraintMaker *make) {\
+        make.centerX.equalTo(self.view.mas_centerX).offset(c);\
+        make.bottom.equalTo(self.view).offset(d);\
+        make.size.sizeOffset(CGSizeMake(3*WIDTH, 1.5*WIDTH));\
+    }];\
+    text;\
+})
 
 - (void)setupViews {
     CGFloat contentViewWidth = CGRectGetWidth([UIScreen mainScreen ].applicationFrame);
-    self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"bg"]];
+    //self.view.backgroundColor = [UIColor colorWithPatternImage:[UIImage imageNamed:@"background"]];
     const float WIDTH = contentViewWidth/12;
     const float VOFFSET = WIDTH/10;
     
-    _btnRecover = ({
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [btn setTitle:@"+" forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage imageNamed:@"btn"] forState:(UIControlStateNormal)];
-        [btn addTarget:self action:@selector(recBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:btn];
-        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX).offset(-4*WIDTH);
-            make.bottom.equalTo(self.view).offset(-4);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, WIDTH));
-        }];
-        btn;
-    });
+    BTN_NUMBER_SETTING(_btnRecover, @"+", -3.7*WIDTH, -4);
+    BTN_NUMBER_SETTING(_btnNumber0, @"0", 0, -4);
+    BTN_NUMBER_SETTING(_btnDone, @"确  定", 3.7*WIDTH, -4);
+    BTN_NUMBER_SETTING(_btnNumber1, @"1", -3.7*WIDTH, -4 - 1.5*WIDTH - VOFFSET);
+    BTN_NUMBER_SETTING(_btnNumber2, @"2", 0, -4 - 1.5*WIDTH - VOFFSET);
+    BTN_NUMBER_SETTING(_btnNumber3, @"3", 3.7*WIDTH, -4 - 1.5*WIDTH - VOFFSET);
+    BTN_NUMBER_SETTING(_btnNumber4, @"4", -3.7*WIDTH, -4 - 3*WIDTH - 2*VOFFSET);
+    BTN_NUMBER_SETTING(_btnNumber5, @"5", 0, -4 - 3*WIDTH - 2*VOFFSET);
+    BTN_NUMBER_SETTING(_btnNumber6, @"6", 3.7*WIDTH, -4 - 3*WIDTH - 2*VOFFSET);
+    BTN_NUMBER_SETTING(_btnNumber7, @"7", -3.7*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET);
+    BTN_NUMBER_SETTING(_btnNumber8, @"8", 0, -4 - 4.5*WIDTH - 3*VOFFSET);
+    BTN_NUMBER_SETTING(_btnNumber9, @"9", 3.7*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET);
     
-    _btnNumber0 = ({
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [btn setTitle:@"0" forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage imageNamed:@"btn"] forState:(UIControlStateNormal)];
-        [btn addTarget:self action:@selector(numBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:btn];
-        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX);
-            make.bottom.equalTo(self.view).offset(-4);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, WIDTH));
-        }];
-        btn;
-    });
-    
-    _btnDone = ({
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [btn setTitle:@"确定" forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage imageNamed:@"btn"] forState:(UIControlStateNormal)];
-        [btn addTarget:self action:@selector(doneBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:btn];
-        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX).offset(4*WIDTH);
-            make.bottom.equalTo(self.view).offset(-4);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, WIDTH));
-        }];
-        btn;
-    });
-    
-    _btnNumber1 = ({
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [btn setTitle:@"1" forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage imageNamed:@"btn"] forState:(UIControlStateNormal)];
-        [btn addTarget:self action:@selector(numBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:btn];
-        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX).offset(-4*WIDTH);
-            make.bottom.equalTo(self.view).offset(-4 - WIDTH - VOFFSET);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, WIDTH));
-        }];
-        btn;
-    });
-    
-    _btnNumber2 = ({
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [btn setTitle:@"2" forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage imageNamed:@"btn"] forState:(UIControlStateNormal)];
-        [btn addTarget:self action:@selector(numBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:btn];
-        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX);
-            make.bottom.equalTo(self.view).offset(-4 - WIDTH - VOFFSET);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, WIDTH));
-        }];
-        btn;
-    });
-    
-    _btnNumber3 = ({
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [btn setTitle:@"3" forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage imageNamed:@"btn"] forState:(UIControlStateNormal)];
-        [btn addTarget:self action:@selector(numBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:btn];
-        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX).offset(4*WIDTH);
-            make.bottom.equalTo(self.view).offset(-4 - WIDTH - VOFFSET);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, WIDTH));
-        }];
-        btn;
-    });
-    
-    _btnNumber4 = ({
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [btn setTitle:@"4" forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage imageNamed:@"btn"] forState:(UIControlStateNormal)];
-        [btn addTarget:self action:@selector(numBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:btn];
-        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX).offset(-4*WIDTH);
-            make.bottom.equalTo(self.view).offset(-4 - 2*WIDTH - 2*VOFFSET);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, WIDTH));
-        }];
-        btn;
-    });
-    
-    _btnNumber5 = ({
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [btn setTitle:@"5" forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage imageNamed:@"btn"] forState:(UIControlStateNormal)];
-        [btn addTarget:self action:@selector(numBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:btn];
-        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX);
-            make.bottom.equalTo(self.view).offset(-4 - 2*WIDTH - 2*VOFFSET);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, WIDTH));
-        }];
-        btn;
-    });
-    
-    _btnNumber6 = ({
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [btn setTitle:@"6" forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage imageNamed:@"btn"] forState:(UIControlStateNormal)];
-        [btn addTarget:self action:@selector(numBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:btn];
-        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX).offset(4*WIDTH);
-            make.bottom.equalTo(self.view).offset(-4 - 2*WIDTH - 2*VOFFSET);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, WIDTH));
-        }];
-        btn;
-    });
-    
-    _btnNumber7 = ({
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [btn setTitle:@"7" forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage imageNamed:@"btn"] forState:(UIControlStateNormal)];
-        [btn addTarget:self action:@selector(numBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:btn];
-        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX).offset(-4*WIDTH);
-            make.bottom.equalTo(self.view).offset(-4 - 3*WIDTH - 3*VOFFSET);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, WIDTH));
-        }];
-        btn;
-    });
-    
-    _btnNumber8 = ({
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [btn setTitle:@"8" forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage imageNamed:@"btn"] forState:(UIControlStateNormal)];
-        [btn addTarget:self action:@selector(numBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:btn];
-        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX);
-            make.bottom.equalTo(self.view).offset(-4 - 3*WIDTH - 3*VOFFSET);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, WIDTH));
-        }];
-        btn;
-    });
-    
-    _btnNumber9 = ({
-        UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-        [btn setTitle:@"9" forState:UIControlStateNormal];
-        [btn setBackgroundImage:[UIImage imageNamed:@"btn"] forState:(UIControlStateNormal)];
-        [btn addTarget:self action:@selector(numBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-        [self.view addSubview:btn];
-        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX).offset(4*WIDTH);
-            make.bottom.equalTo(self.view).offset(-4 - 3*WIDTH - 3*VOFFSET);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, WIDTH));
-        }];
-        btn;
-    });
-    
-    
-    _tile1 = ({
-        UITextField *text = [[UITextField alloc] init];
-        text.borderStyle = UITextBorderStyleRoundedRect;
-        text.enabled = false;
-        [self.view addSubview:text];
-        [text mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX).offset(-4*WIDTH);
-            make.bottom.equalTo(self.view).offset(-4 - 3*WIDTH - 3*VOFFSET - 1.5*WIDTH - 2*VOFFSET);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, 1.5*WIDTH));
-        }];
-        text;
-    });
-    
-    _tile2 = ({
-        UITextField *text = [[UITextField alloc] init];
-        text.borderStyle = UITextBorderStyleRoundedRect;
-        text.enabled = false;
-        [self.view addSubview:text];
-        [text mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX);
-            make.bottom.equalTo(self.view).offset(-4 - 3*WIDTH - 3*VOFFSET - 1.5*WIDTH - 2*VOFFSET);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, 1.5*WIDTH));
-        }];
-        text;
-    });
-    
-    _tile3 = ({
-        UITextField *text = [[UITextField alloc] init];
-        text.borderStyle = UITextBorderStyleRoundedRect;
-        text.enabled = false;
-        [self.view addSubview:text];
-        [text mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX).offset(4*WIDTH);
-            make.bottom.equalTo(self.view).offset(-4 - 3*WIDTH - 3*VOFFSET - 1.5*WIDTH - 2*VOFFSET);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, 1.5*WIDTH));
-        }];
-        text;
-    });
-    
-    _tile4 = ({
-        UITextField *text = [[UITextField alloc] init];
-        text.borderStyle = UITextBorderStyleRoundedRect;
-        text.enabled = false;
-        [self.view addSubview:text];
-        [text mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX).offset(-4*WIDTH);
-            make.bottom.equalTo(self.view).offset(-4 - 3*WIDTH - 3*VOFFSET - 3*WIDTH - 4*VOFFSET);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, 1.5*WIDTH));
-        }];
-        text;
-    });
-    
-    _tile5 = ({
-        UITextField *text = [[UITextField alloc] init];
-        text.borderStyle = UITextBorderStyleRoundedRect;
-        text.enabled = false;
-        [self.view addSubview:text];
-        [text mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX);
-            make.bottom.equalTo(self.view).offset(-4 - 3*WIDTH - 3*VOFFSET - 3*WIDTH - 4*VOFFSET);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, 1.5*WIDTH));
-        }];
-        text;
-    });
-    
-    _tile6 = ({
-        UITextField *text = [[UITextField alloc] init];
-        text.borderStyle = UITextBorderStyleRoundedRect;
-        text.enabled = false;
-        [self.view addSubview:text];
-        [text mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX).offset(4*WIDTH);
-            make.bottom.equalTo(self.view).offset(-4 - 3*WIDTH - 3*VOFFSET - 3*WIDTH - 4*VOFFSET);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, 1.5*WIDTH));
-        }];
-        text;
-    });
-    
-    _tile7 = ({
-        UITextField *text = [[UITextField alloc] init];
-        text.borderStyle = UITextBorderStyleRoundedRect;
-        text.enabled = false;
-        [self.view addSubview:text];
-        [text mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX).offset(-4*WIDTH);
-            make.bottom.equalTo(self.view).offset(-4 - 3*WIDTH - 3*VOFFSET - 4.5*WIDTH - 6*VOFFSET);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, 1.5*WIDTH));
-        }];
-        text;
-    });
-    
-    _tile8 = ({
-        UITextField *text = [[UITextField alloc] init];
-        text.borderStyle = UITextBorderStyleRoundedRect;
-        text.enabled = false;
-        [self.view addSubview:text];
-        [text mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX);
-            make.bottom.equalTo(self.view).offset(-4 - 3*WIDTH - 3*VOFFSET - 4.5*WIDTH - 6*VOFFSET);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, 1.5*WIDTH));
-        }];
-        text;
-    });
-    
-    _tile9 = ({
-        UITextField *text = [[UITextField alloc] init];
-        text.borderStyle = UITextBorderStyleRoundedRect;
-        text.enabled = false;
-        [self.view addSubview:text];
-        [text mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.centerX.equalTo(self.view.mas_centerX).offset(4*WIDTH);
-            make.bottom.equalTo(self.view).offset(-4 - 3*WIDTH - 3*VOFFSET - 4.5*WIDTH - 6*VOFFSET);
-            make.size.sizeOffset(CGSizeMake(3*WIDTH, 1.5*WIDTH));
-        }];
-        text;
-    });
+    TILE_SETTING(_tiles[0], 0, -4*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET - 1.5*WIDTH - 2*VOFFSET);
+    TILE_SETTING(_tiles[1], 1, 0, -4 - 4.5*WIDTH - 3*VOFFSET - 1.5*WIDTH - 2*VOFFSET);
+    TILE_SETTING(_tiles[2], 2, 4*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET - 1.5*WIDTH - 2*VOFFSET);
+    TILE_SETTING(_tiles[3], 3, -4*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET - 3*WIDTH - 4*VOFFSET);
+    TILE_SETTING(_tiles[4], 4, 0, -4 - 4.5*WIDTH - 3*VOFFSET - 3*WIDTH - 4*VOFFSET);
+    TILE_SETTING(_tiles[5], 5, 4*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET - 3*WIDTH - 4*VOFFSET);
+    TILE_SETTING(_tiles[6], 6, -4*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET - 4.5*WIDTH - 6*VOFFSET);
+    TILE_SETTING(_tiles[7], 7, 0, -4 - 4.5*WIDTH - 3*VOFFSET - 4.5*WIDTH - 6*VOFFSET);
+    TILE_SETTING(_tiles[8], 8, 4*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET - 4.5*WIDTH - 6*VOFFSET);
     
 }
+
+- (void)initData{
+    _tiles = [[NSMutableArray alloc] initWithCapacity:9];
+    for (int i = 0; i < 9; i++){
+        UITextField* tile = [[UITextField alloc] init];
+        [_tiles addObject:tile];
+    }
+}
+
+- (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
+    for (UITextField *t in _tiles){
+        t.background = [UIImage imageNamed:@"tiles_normal"];
+    }
+    textField.background = [UIImage imageNamed:@"tiles_focus"];
+    return NO;
+}
+
 -(void)setHelpImageName:(NSString*)name
 {
     imageName = name;
