@@ -12,6 +12,15 @@
 		582521F31E1F875B000F5D51 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582521F11E1F875B000F5D51 /* Main.storyboard */; };
 		582521F51E1F875B000F5D51 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 582521F41E1F875B000F5D51 /* Assets.xcassets */; };
 		582521F81E1F875B000F5D51 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 582521F61E1F875B000F5D51 /* LaunchScreen.storyboard */; };
+		58B4A8991E26190E00121B04 /* libGDTMobSDK.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B4A8981E26190E00121B04 /* libGDTMobSDK.a */; };
+		58B4A8A01E26195600121B04 /* AdSupport.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B4A89F1E26195600121B04 /* AdSupport.framework */; };
+		58B4A8A21E26195F00121B04 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B4A8A11E26195F00121B04 /* CoreLocation.framework */; };
+		58B4A8A41E26196800121B04 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B4A8A31E26196800121B04 /* QuartzCore.framework */; };
+		58B4A8A61E26197100121B04 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B4A8A51E26197100121B04 /* SystemConfiguration.framework */; };
+		58B4A8A81E26197700121B04 /* CoreTelephony.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B4A8A71E26197700121B04 /* CoreTelephony.framework */; };
+		58B4A8AA1E26198300121B04 /* libz.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B4A8A91E26198300121B04 /* libz.tbd */; };
+		58B4A8AC1E26198B00121B04 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B4A8AB1E26198B00121B04 /* Security.framework */; };
+		58B4A8AE1E26199100121B04 /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 58B4A8AD1E26199100121B04 /* StoreKit.framework */; };
 		58CC4BE01E1F8F7100421F48 /* UIImage+Common.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4BDD1E1F8F7100421F48 /* UIImage+Common.m */; };
 		58CC4BE41E1F900600421F48 /* DTTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4BE31E1F900600421F48 /* DTTabBarController.m */; };
 		58CC4BE71E1F922D00421F48 /* DTListAndReciptViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 58CC4BE61E1F922D00421F48 /* DTListAndReciptViewController.m */; };
@@ -41,6 +50,20 @@
 		582521F41E1F875B000F5D51 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		582521F71E1F875B000F5D51 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		582521F91E1F875B000F5D51 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		58B4A8981E26190E00121B04 /* libGDTMobSDK.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = libGDTMobSDK.a; sourceTree = "<group>"; };
+		58B4A89A1E26193A00121B04 /* GDTMobBannerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTMobBannerView.h; sourceTree = SOURCE_ROOT; };
+		58B4A89B1E26193A00121B04 /* GDTMobInterstitial.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTMobInterstitial.h; sourceTree = SOURCE_ROOT; };
+		58B4A89C1E26193A00121B04 /* GDTNativeAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTNativeAd.h; sourceTree = SOURCE_ROOT; };
+		58B4A89D1E26193A00121B04 /* GDTSplashAd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTSplashAd.h; sourceTree = SOURCE_ROOT; };
+		58B4A89E1E26193A00121B04 /* GDTTrack.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GDTTrack.h; sourceTree = SOURCE_ROOT; };
+		58B4A89F1E26195600121B04 /* AdSupport.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AdSupport.framework; path = System/Library/Frameworks/AdSupport.framework; sourceTree = SDKROOT; };
+		58B4A8A11E26195F00121B04 /* CoreLocation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreLocation.framework; path = System/Library/Frameworks/CoreLocation.framework; sourceTree = SDKROOT; };
+		58B4A8A31E26196800121B04 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
+		58B4A8A51E26197100121B04 /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
+		58B4A8A71E26197700121B04 /* CoreTelephony.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreTelephony.framework; path = System/Library/Frameworks/CoreTelephony.framework; sourceTree = SDKROOT; };
+		58B4A8A91E26198300121B04 /* libz.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libz.tbd; path = usr/lib/libz.tbd; sourceTree = SDKROOT; };
+		58B4A8AB1E26198B00121B04 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		58B4A8AD1E26199100121B04 /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		58CC4BCF1E1F8BA800421F48 /* dqxTailor.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = dqxTailor.pch; sourceTree = "<group>"; };
 		58CC4BD91E1F8F5A00421F48 /* Macros.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Macros.h; path = Common/Headers/Macros.h; sourceTree = "<group>"; };
 		58CC4BDA1E1F8F5A00421F48 /* Constants.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Constants.h; path = Common/Headers/Constants.h; sourceTree = "<group>"; };
@@ -86,6 +109,15 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				58B4A8AE1E26199100121B04 /* StoreKit.framework in Frameworks */,
+				58B4A8AC1E26198B00121B04 /* Security.framework in Frameworks */,
+				58B4A8AA1E26198300121B04 /* libz.tbd in Frameworks */,
+				58B4A8A81E26197700121B04 /* CoreTelephony.framework in Frameworks */,
+				58B4A8A61E26197100121B04 /* SystemConfiguration.framework in Frameworks */,
+				58B4A8A41E26196800121B04 /* QuartzCore.framework in Frameworks */,
+				58B4A8A21E26195F00121B04 /* CoreLocation.framework in Frameworks */,
+				58B4A8A01E26195600121B04 /* AdSupport.framework in Frameworks */,
+				58B4A8991E26190E00121B04 /* libGDTMobSDK.a in Frameworks */,
 				58F877B71E20A28000C879E5 /* libsqlite3.0.tbd in Frameworks */,
 				FE489177A02A21F8561EE474 /* libPods-dqxTailor.a in Frameworks */,
 			);
@@ -124,6 +156,11 @@
 		582521E71E1F875B000F5D51 /* dqxTailor */ = {
 			isa = PBXGroup;
 			children = (
+				58B4A89A1E26193A00121B04 /* GDTMobBannerView.h */,
+				58B4A89B1E26193A00121B04 /* GDTMobInterstitial.h */,
+				58B4A89C1E26193A00121B04 /* GDTNativeAd.h */,
+				58B4A89D1E26193A00121B04 /* GDTSplashAd.h */,
+				58B4A89E1E26193A00121B04 /* GDTTrack.h */,
 				58F877B31E20A22200C879E5 /* database */,
 				58CC4BD31E1F8EC700421F48 /* Common */,
 				58CC4BD21E1F8EC000421F48 /* Models */,
@@ -300,6 +337,15 @@
 		D271CFE076D72A8E63B971ED /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				58B4A8AD1E26199100121B04 /* StoreKit.framework */,
+				58B4A8AB1E26198B00121B04 /* Security.framework */,
+				58B4A8A91E26198300121B04 /* libz.tbd */,
+				58B4A8A71E26197700121B04 /* CoreTelephony.framework */,
+				58B4A8A51E26197100121B04 /* SystemConfiguration.framework */,
+				58B4A8A31E26196800121B04 /* QuartzCore.framework */,
+				58B4A8A11E26195F00121B04 /* CoreLocation.framework */,
+				58B4A89F1E26195600121B04 /* AdSupport.framework */,
+				58B4A8981E26190E00121B04 /* libGDTMobSDK.a */,
 				58F877B61E20A28000C879E5 /* libsqlite3.0.tbd */,
 				ED5ED8E680CF3DAB29F2A51A /* libPods-dqxTailor.a */,
 			);
@@ -573,6 +619,10 @@
 				INFOPLIST_FILE = dqxTailor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.mengyoutu.dqxTailor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -590,6 +640,10 @@
 				INFOPLIST_FILE = dqxTailor/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.mengyoutu.dqxTailor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";

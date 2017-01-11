@@ -34,6 +34,17 @@
     
     
     _window.rootViewController = [[DTTabBarController alloc] init];
+    
+    //Tencent  号广告位  开屏广告
+    GDTSplashAd *splash = [[GDTSplashAd alloc] initWithAppkey:@"1105827469" placementId:@"6080210894263517"];
+    splash.delegate = self; //设置代理
+    //根据iPhone设备不同设置不同背景图
+    
+    splash.fetchDelay = 5; //开发者可以设置开屏拉取时间,超时则放弃展示
+    //[可选]拉取并展示全屏开屏广告
+    [splash loadAdAndShowInWindow:self.window];
+    self.splash = splash;
+    
     return YES;
 }
 
