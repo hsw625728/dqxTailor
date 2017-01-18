@@ -95,6 +95,7 @@
 #define STATES_SETTING(a,b,c,d,e) a = ({\
 UITextField *te = [[UITextField alloc] init];\
 te.borderStyle = UITextBorderStyleNone;\
+te.font = FontWithSize(12);\
 te.tag = b;\
 te.text = c;\
 te.textAlignment=UITextAlignmentCenter;\
@@ -105,7 +106,7 @@ te.background = [UIImage imageNamed:@"Button_normal"];\
 [te mas_makeConstraints:^(MASConstraintMaker *make) {\
 make.centerX.equalTo(self.view.mas_centerX).offset(d);\
 make.bottom.equalTo(self.view).offset(e);\
-make.size.sizeOffset(CGSizeMake(WIDTH, WIDTH));\
+make.size.sizeOffset(CGSizeMake(1.25*WIDTH, WIDTH));\
 }];\
 te;\
 })
@@ -188,16 +189,17 @@ te;\
     //加号减号字号单独设置大一些
     _btnRecover.titleLabel.font = [UIFont systemFontOfSize: 40];
     
-    STATES_SETTING(_states[0], 10, info.patterns[0], -5.4*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET - 6*WIDTH - 7*VOFFSET);
-    STATES_SETTING(_states[1], 11, info.patterns[1], -4.2*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET - 6*WIDTH - 7*VOFFSET);
-    STATES_SETTING(_states[2], 12, info.patterns[2], -3.0*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET - 6*WIDTH - 7*VOFFSET);
-    STATES_SETTING(_states[3], 13, info.patterns[3], -1.8*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET - 6*WIDTH - 7*VOFFSET);
-    STATES_SETTING(_states[4], 14, info.patterns[4], -0.6*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET - 6*WIDTH - 7*VOFFSET);
-    STATES_SETTING(_states[5], 15, info.patterns[5], 0.6*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET - 6*WIDTH - 7*VOFFSET);
-    STATES_SETTING(_states[6], 16, info.patterns[6], 1.8*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET - 6*WIDTH - 7*VOFFSET);
-    STATES_SETTING(_states[7], 17, info.patterns[7], 3.0*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET - 6*WIDTH - 7*VOFFSET);
-    STATES_SETTING(_states[8], 18, info.patterns[8], 4.2*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET - 6*WIDTH - 7*VOFFSET);
-    STATES_SETTING(_states[9], 19, info.patterns[9], 5.4*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET - 6*WIDTH - 7*VOFFSET);
+#define STATE_Y_POINT (-4 - 4.5*WIDTH - 3*VOFFSET - 6*WIDTH - 8*VOFFSET)
+    STATES_SETTING(_states[0], 10, info.patterns[0], -5.4*WIDTH, STATE_Y_POINT);
+    STATES_SETTING(_states[1], 11, info.patterns[1], -4.2*WIDTH, STATE_Y_POINT);
+    STATES_SETTING(_states[2], 12, info.patterns[2], -3.0*WIDTH, STATE_Y_POINT);
+    STATES_SETTING(_states[3], 13, info.patterns[3], -1.8*WIDTH, STATE_Y_POINT);
+    STATES_SETTING(_states[4], 14, info.patterns[4], -0.6*WIDTH, STATE_Y_POINT);
+    STATES_SETTING(_states[5], 15, info.patterns[5], 0.6*WIDTH, STATE_Y_POINT);
+    STATES_SETTING(_states[6], 16, info.patterns[6], 1.8*WIDTH, STATE_Y_POINT);
+    STATES_SETTING(_states[7], 17, info.patterns[7], 3.0*WIDTH, STATE_Y_POINT);
+    STATES_SETTING(_states[8], 18, info.patterns[8], 4.2*WIDTH, STATE_Y_POINT);
+    STATES_SETTING(_states[9], 19, info.patterns[9], 5.4*WIDTH, STATE_Y_POINT);
     
     /*
     TILE_SETTING(_tiles[0], 6, -4*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET - 4.5*WIDTH - 6*VOFFSET);
@@ -310,7 +312,8 @@ te;\
         default:
             break;
     }
-    
+    //初始默认选中第一项
+    [self textFieldShouldBeginEditing:_states[0]];
 }
 
 - (BOOL)textFieldShouldBeginEditing:(UITextField *)textField{
@@ -436,7 +439,7 @@ te;\
         tileStr = [tileStr stringByReplacingOccurrencesOfString:@"+" withString:@""];
         result += tileStr.intValue;
     }
-    _resultValueLabel.text = [NSString stringWithFormat:@"%i", result];
+    _resultValueLabel.text = [NSString stringWithFormat:@"当前误差：%i (大成功条件：头<=2 下装<=4 上装<=8)", result];
 }
 
 -(void)enableAllBtn{
