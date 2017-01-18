@@ -37,6 +37,8 @@
 //5种力道的数值
 @property (strong, nonatomic) NSDictionary *stateValues;
 @property (strong, nonatomic) UILabel *stateValueLabel;
+//当前误差值
+@property (strong, nonatomic) UILabel *resultValueLabel;
 
 
 @end
@@ -170,7 +172,7 @@ te;\
     const float WIDTH = contentViewWidth/12;
     const float VOFFSET = WIDTH/10;
     
-    BTN_NUMBER_SETTING(_btnRecover, @"+", recBtnClick, -3.7*WIDTH, -4);
+    BTN_NUMBER_SETTING(_btnRecover, @"-", recBtnClick, -3.7*WIDTH, -4);
     BTN_NUMBER_SETTING(_btnNumber0, @"0", numBtnClick, 0, -4);
     BTN_NUMBER_SETTING(_btnDone, @"确  定", doneBtnClick, 3.7*WIDTH, -4);
     BTN_NUMBER_SETTING(_btnNumber1, @"1", numBtnClick, -3.7*WIDTH, -4 - 1.5*WIDTH - VOFFSET);
@@ -183,6 +185,8 @@ te;\
     BTN_NUMBER_SETTING(_btnNumber8, @"8", numBtnClick, 0, -4 - 4.5*WIDTH - 3*VOFFSET);
     BTN_NUMBER_SETTING(_btnNumber9, @"9", numBtnClick, 3.7*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET);
     
+    //加号减号字号单独设置大一些
+    _btnRecover.titleLabel.font = [UIFont systemFontOfSize: 40];
     
     STATES_SETTING(_states[0], 10, info.patterns[0], -5.4*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET - 6*WIDTH - 7*VOFFSET);
     STATES_SETTING(_states[1], 11, info.patterns[1], -4.2*WIDTH, -4 - 4.5*WIDTH - 3*VOFFSET - 6*WIDTH - 7*VOFFSET);
@@ -236,6 +240,20 @@ te;\
         [label mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.view).offset(0);
             make.left.equalTo(self.view).offset(0);
+        }];
+        
+        label;
+    });
+    
+    _resultValueLabel = ({
+        UILabel *label = [UILabel new];
+        //label.backgroundColor = [UIColor whiteColor];
+        label.font = FontWithSize(12);
+        label.textColor = DLightBlackTextColor;
+        [self.view addSubview:label];
+        [label mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.top.equalTo(_states[0]).offset(-20);
+            make.left.equalTo(_states[0]).offset(0);
         }];
         
         label;
@@ -305,6 +323,14 @@ te;\
             textField.background = [UIImage imageNamed:@"Button_select"];
             [self enableAllBtn];
             _activeTileIndex = textField.tag;
+            //如果设置了数值就要同步设置加减号按钮
+            NSString* lstr = ((UILabel*)(_cutpoints[_activeTileIndex])).text;
+            if ([lstr rangeOfString:@"+"].location != NSNotFound){
+                //有减号
+                [_btnRecover setTitle:@"+" forState:(UIControlStateNormal)];
+            }else{
+                [_btnRecover setTitle:@"-" forState:(UIControlStateNormal)];
+            }
         }else{
             [self disableAllBtn];
             _activeTileIndex = -1;
@@ -330,10 +356,26 @@ te;\
 - (void)numBtnClick:(UIButton *)btn
 {
     if (_activeTileIndex != -1){
-        NSString *cur = ((UITextField*)(_cutpoints[_activeTileIndex])).text;
-        if (cur.length < 3){
+        NSString *cur = ((UILabel*)(_cutpoints[_activeTileIndex])).text;
+        if (cur.length < 4){
             cur = [cur stringByAppendingString:btn.titleLabel.text];
-            ((UITextField*)(_cutpoints[_activeTileIndex])).text = cur;
+            
+            //删除符号
+            cur = [cur stringByReplacingOccurrencesOfString:@"-" withString:@""];
+            cur = [cur stringByReplacingOccurrencesOfString:@"+" withString:@""];
+            
+            if([self isAddSelected]){
+                //减号
+                NSString* temp = [[NSString alloc] init];
+                temp = @"-";
+                cur = [temp stringByAppendingString:cur];
+            }else{
+                //加号
+                NSString* temp = [[NSString alloc] init];
+                temp = @"+";
+                cur = [temp stringByAppendingString:cur];
+            }
+            ((UILabel*)(_cutpoints[_activeTileIndex])).text = cur;
         }
     }
 }
@@ -341,20 +383,60 @@ te;\
 - (void)recBtnClick:(UIButton *)btn
 {
     
+    if (_activeTileIndex != -1){
+        NSString *cur = ((UILabel*)(_cutpoints[_activeTileIndex])).text;
+        cur = [cur stringByReplacingOccurrencesOfString:@"-" withString:@""];
+        cur = [cur stringByReplacingOccurrencesOfString:@"+" withString:@""];
+        ((UILabel*)(_cutpoints[_activeTileIndex])).text = cur;
+    }
+    
+    if (![self isAddSelected]){
+        //减号变加号
+        [btn setTitle:@"-" forState:(UIControlStateNormal)];
+        if (_activeTileIndex != -1){
+            NSString *cur = ((UILabel*)(_cutpoints[_activeTileIndex])).text;
+            if (cur.length < 4){
+                NSString* temp = [[NSString alloc] init];
+                temp = @"-";
+                cur = [temp stringByAppendingString:cur];
+                ((UILabel*)(_cutpoints[_activeTileIndex])).text = cur;
+            }
+        }
+    }else{
+        //加号变减号
+        [btn setTitle:@"+" forState:(UIControlStateNormal)];
+        if (_activeTileIndex != -1){
+            NSString *cur = ((UILabel*)(_cutpoints[_activeTileIndex])).text;
+            if (cur.length < 4){
+                NSString* temp = [[NSString alloc] init];
+                temp = @"+";
+                cur = [temp stringByAppendingString:cur];
+                ((UILabel*)(_cutpoints[_activeTileIndex])).text = cur;
+            }
+        }
+    }
 }
 
 - (void)doneBtnClick:(UIButton *)btn
 {
+    int result = 0;
+    
     for (int i = 0; i < 9; i++){
         NSString *tileStr = ((UITextField*)(_tiles[i])).text;
-        NSString *cutStr = ((UITextField*)(_cutpoints[i])).text;
-        if (![tileStr isEqualToString:@""] && \
-            ![cutStr isEqualToString:@""]){
-            tileStr = [NSString stringWithFormat:@"%i", tileStr.intValue - cutStr.intValue];
+        NSString *cutStr = ((UILabel*)(_cutpoints[i])).text;
+        if (![tileStr isEqualToString:@""] && ![cutStr isEqualToString:@""]){
+            tileStr = [NSString stringWithFormat:@"%i", tileStr.intValue + cutStr.intValue];
             ((UITextField*)(_tiles[i])).text = tileStr;
-            ((UITextField*)(_cutpoints[i])).text = @"";
+            ((UILabel*)(_cutpoints[i])).text = @"";
+            
         }
+        
+        //删除符号计算误差
+        tileStr = [tileStr stringByReplacingOccurrencesOfString:@"-" withString:@""];
+        tileStr = [tileStr stringByReplacingOccurrencesOfString:@"+" withString:@""];
+        result += tileStr.intValue;
     }
+    _resultValueLabel.text = [NSString stringWithFormat:@"%i", result];
 }
 
 -(void)enableAllBtn{
@@ -387,4 +469,12 @@ te;\
     _btnRecover.enabled = NO;
 }
 
+-(BOOL)isAddSelected{
+    if (![_btnRecover.titleLabel.text isEqualToString:@"-"]){
+        //减号
+        return NO;
+    }else{
+        return YES;
+    }
+}
 @end
