@@ -12,10 +12,16 @@
 #import "DTDetailMaterialCell.h"
 #import "UIImage+Common.h"
 #import "View+MASAdditions.h"
+#import "DTCalculatorViewController.h"
+//Tencent
+#import "GDTMobBannerView.h" //导入GDTMobBannerView.h头文件
 
 @interface DTReciptMaterialViewController() <UITableViewDataSource, UITableViewDelegate>
 
 @property (strong, nonatomic) UITableView *tableView;
+@property (strong, nonatomic) UIButton *btnCal;
+//Tencent
+@property (strong, nonatomic) GDTMobBannerView *bannerView;//声明一个GDTMobBannerView的实例
 
 @end
 
@@ -59,6 +65,22 @@
     [self initDatas];
     
     [self setupViews];
+    
+    //Tencent 2 号广告位
+    _bannerView = [[GDTMobBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height - GDTMOB_AD_SUGGEST_SIZE_320x50.height, self.view.frame.size.width, GDTMOB_AD_SUGGEST_SIZE_320x50.height) appkey:@"1105884327" placementId:@"8000714867407856"];
+    _bannerView.delegate = self; // 设置Delegate
+    _bannerView.currentViewController = self; //设置当前的ViewController
+    _bannerView.interval = 30; //【可选】设置广告轮播时间;范围为30~120秒,0表示不轮 播
+    _bannerView.isGpsOn = NO; //【可选】开启GPS定位;默认关闭
+    _bannerView.showCloseBtn = NO; //【可选】展示关闭按钮;默认显示
+    _bannerView.isAnimationOn = YES; //【可选】开启banner轮播和展现时的动画效果; 默认开启
+    [self.view addSubview:_bannerView]; //添加到当前的view中
+    [_bannerView loadAdAndShow];
+    [_bannerView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.width.equalTo(@(self.view.frame.size.width));
+        make.height.equalTo(@50);
+        make.bottom.left.equalTo(self.view);
+    }];
 }
 #pragma mark - Private Method
 
@@ -165,6 +187,27 @@
         
         tableView;
     });
+    
+    _btnCal = ({
+        UIButton *btn = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+        btn.titleLabel.font = [UIFont systemFontOfSize: 20];
+        [btn setTitle:@"裁缝计算器" forState:UIControlStateNormal];
+        [btn setBackgroundImage:[UIImage imageNamed:@"nbtn_normal"] forState:(UIControlStateNormal)];
+        [btn setBackgroundImage:[UIImage imageNamed:@"nbtn_hover"] forState:(UIControlStateSelected)];
+        [btn setBackgroundImage:[UIImage imageNamed:@"nbtn_active"] forState:(UIControlStateFocused)];
+        [btn setTitleColor:[UIColor blackColor]forState:UIControlStateNormal];
+        [btn setTitleColor:[UIColor blackColor]forState:UIControlStateSelected];
+        [btn setTitleColor:[UIColor blackColor]forState:UIControlStateFocused];
+        [btn setTitleColor:[UIColor grayColor]forState:UIControlStateDisabled];
+        [btn addTarget:self action:@selector(calBtnClick:) forControlEvents:UIControlEventTouchUpInside];
+        [self.view addSubview:btn];
+        [btn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.centerX.equalTo(self.view.mas_centerX).offset(0);
+            make.bottom.equalTo(self.view).offset(-150);
+            make.size.sizeOffset(CGSizeMake(200, 50));
+        }];
+        btn;
+    });
 }
 
 #pragma mark - UIScrollViewDelegate
@@ -216,4 +259,10 @@
     return;
 }
 
+- (void)calBtnClick:(UIButton *)btn
+{
+    DTCalculatorViewController *materialController = [[DTCalculatorViewController alloc] init];
+    [materialController setEquipName:_itemName];
+    [self.navigationController pushViewController:materialController animated:YES];
+}
 @end

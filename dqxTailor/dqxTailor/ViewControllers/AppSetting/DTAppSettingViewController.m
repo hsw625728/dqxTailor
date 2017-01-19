@@ -15,7 +15,7 @@
 #import "DTTableHeaderView.h"
 #import "DTAppHelpViewController.h"
 //Tencent
-//#import "GDTMobBannerView.h" //导入GDTMobBannerView.h头文件
+#import "GDTMobBannerView.h" //导入GDTMobBannerView.h头文件
 
 
 @interface DTAppSettingViewController () <UITableViewDataSource, UITableViewDelegate>
@@ -23,7 +23,7 @@
 @property (strong, nonatomic) UITableView *tableView;
 @property (strong, nonatomic) DTTableHeaderView *headerView;
 //Tencent
-//@property (strong, nonatomic) GDTMobBannerView *bannerView;//声明一个GDTMobBannerView的实例
+@property (strong, nonatomic) GDTMobBannerView *bannerView;//声明一个GDTMobBannerView的实例
 
 @end
 
@@ -57,10 +57,10 @@
     [self initDatas];
     [self setupViews];
     
-    /*
+    
     //Tencent 5 号广告位
     _bannerView = [[GDTMobBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height -
-                                                                     GDTMOB_AD_SUGGEST_SIZE_320x50.height, self.view.frame.size.width, GDTMOB_AD_SUGGEST_SIZE_320x50.height) appkey:@"1105827469" placementId:@"6090411729601381"];
+                                                                     GDTMOB_AD_SUGGEST_SIZE_320x50.height, self.view.frame.size.width, GDTMOB_AD_SUGGEST_SIZE_320x50.height) appkey:@"1105884327" placementId:@"7030016887205868"];
     _bannerView.delegate = self; // 设置Delegate
     _bannerView.currentViewController = self; //设置当前的ViewController
     _bannerView.interval = 30; //【可选】设置广告轮播时间;范围为30~120秒,0表示不轮 播
@@ -74,15 +74,15 @@
         make.height.equalTo(@50);
         make.bottom.left.equalTo(self.view);
     }];
-     */
+    
 }
 
 #pragma mark - Private Method
 
 - (void)initDatas {
     sectionTitles = @[@"软件相关", @"操作说明"];
-    rowTitles = @[@[@"DQX相关工具", @"建议反馈邮箱：hsw625728@163.com"], @[@"主界面操作示例", @"等级设置界面操作示例", @"职业技能点洁面操作示例"]];
-    rowImageNames = @[@[@"center_setting", @"tab_music_normal"], @[@"tab_movie_normal", @"tab_movie_normal", @"tab_movie_normal"]];
+    rowTitles = @[@[@"DQX相关工具", @"建议反馈邮箱：hsw625728@163.com"], @[@"主界面操作示例"]];
+    rowImageNames = @[@[@"center_setting", @"tab_music_normal"], @[@"tab_movie_normal"]];
 }
 
 - (void)setupViews {
@@ -167,7 +167,7 @@
         switch (indexPath.row)
         {
             case 0:
-                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/zhi-ren-pei-fang-su-caifor-dqx/id1181736107?l=zh&ls=1&mt=8"]];
+                [[UIApplication sharedApplication] openURL:[NSURL URLWithString:@"https://itunes.apple.com/us/app/dqx-ji-neng-dian-fen-pei-mo/id1187694327?l=zh&ls=1&mt=8"]];
                 break;
             default:
                 break;
@@ -177,13 +177,7 @@
         DTAppHelpViewController *view = [[DTAppHelpViewController alloc] init];
         switch (indexPath.row) {
             case 0:
-                [view setHelpImageName:@"help_main"];
-                break;
-            case 1:
-                [view setHelpImageName:@"help_level"];
-                break;
-            case 2:
-                [view setHelpImageName:@"help_point"];
+                [view setHelpImageName:@"help1"];
                 break;
             default:
                 break;

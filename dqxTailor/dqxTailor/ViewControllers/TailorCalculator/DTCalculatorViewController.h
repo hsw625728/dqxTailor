@@ -10,9 +10,12 @@
 #define DTCalculatorViewController_h
 
 #import "DTBaseViewController.h"
+//tencent
+#import "GDTMobInterstitial.h"
 
-@interface DTCalculatorViewController : DTBaseViewController
-
+@interface DTCalculatorViewController : DTBaseViewController<GDTMobInterstitialDelegate>{
+    GDTMobInterstitial *_interstitialObj;
+}
 - (void) setEquipName:(NSString*)name;
 
 @end

@@ -61,7 +61,7 @@
     [super viewDidLoad];
     
     
-    self.navigationItem.title = DAppHelp;
+    self.navigationItem.title = equipName;
     
     [self.navigationController.navigationBar setBackgroundImage:[UIImage imageWithColor:[UIColor clearColor]] forBarMetrics:UIBarMetricsDefault];
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
@@ -480,4 +480,21 @@ te;\
         return YES;
     }
 }
+
+// 在适当的时候,初始化并调用loadAd方法进行预加载
+- (IBAction)loadAd:(id)sender {
+    _interstitialObj = [[GDTMobInterstitial alloc]
+                        initWithAppkey:@"1105884327"
+                        placementId:@"2040915837606859"]; _interstitialObj.delegate = self; //设置委托
+    _interstitialObj.isGpsOn = NO; //【可选】设置GPS开关 //预加载广告
+    [_interstitialObj loadAd];
+}
+/**
+ * 在适当的时候,调用presentFromRootViewController来展现插屏广告
+ */
+- (IBAction)showAd:(id)sender {
+    UIViewController *vc = [[[UIApplication sharedApplication] keyWindow]
+                            rootViewController];
+}
+
 @end
