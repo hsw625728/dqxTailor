@@ -59,6 +59,7 @@
     
     
     //Tencent 5 号广告位
+    /*
     _bannerView = [[GDTMobBannerView alloc] initWithFrame:CGRectMake(0, self.view.frame.size.height -
                                                                      GDTMOB_AD_SUGGEST_SIZE_320x50.height, self.view.frame.size.width, GDTMOB_AD_SUGGEST_SIZE_320x50.height) appkey:@"1105884327" placementId:@"7030016887205868"];
     _bannerView.delegate = self; // 设置Delegate
@@ -74,7 +75,7 @@
         make.height.equalTo(@50);
         make.bottom.left.equalTo(self.view);
     }];
-    
+    */
 }
 
 #pragma mark - Private Method

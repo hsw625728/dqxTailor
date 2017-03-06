@@ -386,7 +386,6 @@
 				TargetAttributes = {
 					582521E41E1F875B000F5D51 = {
 						CreatedOnToolsVersion = 8.1;
-						DevelopmentTeam = 887CVK63XR;
 						ProvisioningStyle = Manual;
 					};
 				};
@@ -613,6 +612,7 @@
 			baseConfigurationReference = D2BBE20B1C9938E15DFA26E2 /* Pods-dqxTailor.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = "";
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = dqxTailor/dqxTailor.pch;
@@ -647,7 +647,7 @@
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = cn.mengyoutu.dqxTailor;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "39505618-0206-49d5-8d13-dd1524d17ffd";
+				PROVISIONING_PROFILE = "ab58ddda-f353-4729-b00b-fa6b10f51e58";
 				PROVISIONING_PROFILE_SPECIFIER = dqxTailor;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
